@@ -1,26 +1,11 @@
 # simpleFlightSearch
-I want to asses your ability to create a web application and web service. It truly is the bare minimum of knowledge necessary to be successful in this position. I don't want you to spend a lot of time on this. You should be able to do this in a few hours if the job is right for you.
+This is a simple a web application and web service that allow users to search flights.
 
-### Flight Search
+### Note
 
-This programming task consists of building a simple web application to search for flights. Fork this repository and create your application. It should take this input from the user:
+It uses Angular 8 and needs backend as a RESTful service. 
+Please run the backend service ot integrate it together.
+Change API_URL for the backed host.
+Make a search by entering 2018-01-31 as the date.
 
-(Flight Number ||  (Origin && Destination)) && Date
-
-The application will call a service that you create using either Node with Express or Java with Spring MVC. I have provided some sample data for the application in this file 
-
-
-[Flight Documents](./flight-docs/flight-sample.json)
-
-
-
-The file contains an array whose elements represent flights. The data should be defined as a constant in your service. 
-
-
-You must use Angular 4 or higher. Style however you would like. You have total freedom to do what you want but make sure it can do these two things:
-
-	• Validate that the user has provided the right criteria to make a search 
-	• Neatly display the results
-
-Create a pull request once you have it working. I will clone your repository, verify that it works, and evaluate it.
 

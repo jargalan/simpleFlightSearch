@@ -1,0 +1,79 @@
+<h2>Search Flight</h2>
+
+<mat-accordion>
+
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>Search by flight number</mat-panel-title>
+      <mat-panel-description></mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <form [formGroup]="searchByFlightForm" (ngSubmit)="onSearchByFlight()">
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" (click)="picker.open()" placeholder="Choose a date" formControlName="date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput placeholder="Flight Number" formControlName="flightNumber" type="number">
+        </mat-form-field>
+        <div *ngIf="sf.flightNumber.touched && sf.flightNumber.errors" class="invalid-feedback">
+          <div *ngIf="sf.flightNumber.errors.minlength">Flight Number must be at least 2 characters</div>
+        </div>
+      </div>
+      <button class="button" type="submit">Search</button>
+    </form>
+  </mat-expansion-panel>
+
+  <p> - or - </p>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Search by direction</mat-panel-title>
+      <mat-panel-description></mat-panel-description>
+    </mat-expansion-panel-header>
+    <form [formGroup]="searchByDirectForm" (ngSubmit)="onSearchByDirect()">
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker2" (click)="picker2.open()" placeholder="Choose a date" formControlName="date">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <!-- <mat-form-field>
+          <input matInput placeholder="Origin" formControlName="origin">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Destination" formControlName="destination">
+        </mat-form-field> -->
+        <mat-form-field>
+          <input matInput type="text" placeholder="Origin" formControlName="origin" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        
+        <mat-form-field>
+          <input matInput type="text" placeholder="Destination" formControlName="destination" [matAutocomplete]="auto2">
+          <mat-autocomplete #auto2="matAutocomplete">
+            <mat-option *ngFor="let option of filteredDestOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+      </div>
+      <button class="button" type="submit">Search</button>
+    </form>
+  </mat-expansion-panel>
+
+</mat-accordion>
+<br/>
+

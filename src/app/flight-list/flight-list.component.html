@@ -1,0 +1,29 @@
+<app-search-flight (notify)="updateFlights($event)"></app-search-flight>
+
+<h2 *ngIf="flights !== undefined">Search Result</h2>
+
+<div *ngIf="flights !== undefined && flights.length === 0">
+  No matches found.
+</div>
+
+<div *ngFor="let flight of flights">
+
+  <h3>
+    <a [title]="flight.flightNumber" href="#">
+      Flight Number: {{ flight.flightNumber }} ({{ flight.origin }} > {{ flight.destination }})
+    </a>
+  </h3>
+  
+  <p *ngIf="flight.flightNumber">Flight Number: {{ flight.flightNumber }}</p>
+  <p *ngIf="flight.aircraft">Aircraft: {{ flight.aircraft }}</p>
+  <p *ngIf="flight.departure">Departure: {{ flight.departure.replace('T', ' ').substring(0, 19) }}</p>
+  <p *ngIf="flight.arrival">Arrival: {{ flight.arrival.replace('T', ' ') }}</p>
+  <p *ngIf="flight.origin">Origin: {{ flight.origin }}</p>
+  <p *ngIf="flight.destination">Destination: {{ flight.destination }}</p>
+  <p *ngIf="flight.distance">Distance: {{ flight.distance }}</p>
+  <p *ngIf="flight.carrier">Carrier: {{ flight.carrier }}</p>
+  <p *ngIf="flight.status">Status: {{ flight.status }}</p>
+  <p *ngIf="flight.travelTime">Travel Time: {{ flight.travelTime }}</p>
+
+</div>
+
